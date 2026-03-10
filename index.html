@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas Meteorológicas - CMM Puerto Montt</title>
+    <style>
+        :root {
+            --azul-marino: #1a3a5a;
+            --azul-claro: #3498db;
+            --blanco: #ffffff;
+            --gris-fondo: #f4f7f6;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--gris-fondo);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Encabezado con Logo --- */
+        header {
+            background-color: var(--azul-marino);
+            color: var(--blanco);
+            width: 100%;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-institucional {
+            width: 200px; /* Tamaño ideal para el logo */
+            height: auto;
+            margin-bottom: 15px;
+            filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.3));
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        header h2 {
+            margin: 8px 0 0 0;
+            font-weight: 300;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-horizontal {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            padding: 40px 0;
+        }
+
+        /* --- Botones y Tooltips --- */
+        .btn-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .btn-nav {
+            background-color: var(--blanco);
+            color: var(--azul-marino);
+            border: none;
+            padding: 35px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-radius: 20px;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 200px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.06);
+            cursor: pointer;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 230px;
+            background-color: var(--azul-marino);
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 12px;
+            position: absolute;
+            z-index: 10;
+            bottom: 115%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            font-size: 0.85rem;
+            font-weight: normal;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            line-height: 1.4;
+            pointer-events: none;
+        }
+
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 6px;
+            border-style: solid;
+            border-color: var(--azul-marino) transparent transparent transparent;
+        }
+
+        .btn-wrapper:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-8px);
+            background-color: var(--azul-claro);
+            color: var(--blanco);
+            box-shadow: 0 12px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            transition: var(--transition);
+        }
+
+        .btn-nav:hover .icon {
+            transform: scale(1.1);
+        }
+
+        /* --- Pie de Firma --- */
+        footer {
+            background-color: #e9ecef;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 4px solid var(--azul-marino);
+        }
+
+        .nombre-firma {
+            color: var(--azul-marino);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 850px) {
+            .menu-horizontal {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            .btn-nav {
+                width: 85%;
+            }
+            .logo-institucional {
+                width: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://dn721908.ca.archive.org/0/items/imagen_mejorada_3D/LOGO%20METEOPMO.png" 
+             alt="Logo Meteorología Puerto Montt" 
+             class="logo-institucional">
+        
+        <h1>ESTADÍSTICAS METEOROLÓGICAS</h1>
+        <h2>Centro Zonal de Meteorología Marina de Puerto Montt</h2>
+    </header>
+
+    <div class="container">
+        <nav class="menu-horizontal">
+            
+            <div class="btn-wrapper">
+                <a href="https://fran5142.github.io/ESTADISTICAS-PRONOSTICOS-PMO/" class="btn-nav">
+                    <span class="icon">📊</span>
+                    <span>Pronósticos Totales</span>
+                </a>
+                <span class="tooltip-text">Análisis detallado de pronósticos diarios y tendencias climáticas regionales.</span>
+            </div>
+
+            <div class="btn-wrapper">
+                <a href="https://fran5142.github.io/ESTADISTICAS-AVISOS-MET./" class="btn-nav">
+                    <span class="icon">⚠️</span>
+                    <span>Avisos</span>
+                </a>
+                <span class="tooltip-text">Registro de Avisos de Mal Tiempo, Especiales y Temporales de viento y mar.</span>
+            </div>
+
+            <div class="btn-wrapper">
+                <a href="https://fran5142.github.io/ESTADISTICAS-APOYO-MET/" class="btn-nav">
+                    <span class="icon">⚓</span>
+                    <span>Apoyos</span>
+                </a>
+                <span class="tooltip-text">Control estadístico de apoyos brindados a la navegación y naves en zona.</span>
+            </div>
+
+            <div class="btn-wrapper">
+                <a href="https://fran5142.github.io/ESTADISTICAS-RESUMEN-TOTAL-PRONOSTICOS-PMO/" class="btn-nav">
+                    <span class="icon">📋</span>
+                    <span>Resumen Total</span>
+                </a>
+                <span class="tooltip-text">Panel consolidado con el resumen total de la gestión meteorológica zonal.</span>
+            </div>
+
+        </nav>
+    </div>
+
+    <footer>
+        <span class="nombre-firma">Creado por Cabo 1º (Met.) Francisco Salas Muñoz</span>
+    </footer>
+
+</body>
+</html>
